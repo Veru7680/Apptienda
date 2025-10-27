@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IonicModule } from '@ionic/angular'; // ✅ Importa todos los componentes de Ionic
+import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
+
+// ✅ Importa tu TabsComponent
+import { TabsComponent } from '../tabs/tabs.component'; // Ajusta la ruta según tu proyecto
 
 @Component({
   selector: 'app-menu',
@@ -10,8 +13,9 @@ import { RouterModule } from '@angular/router';
   styleUrls: ['./menu.component.scss'],
   imports: [
     CommonModule,
-    IonicModule, // ✅ Esto reemplaza a todos los IonXXX individuales
-    RouterModule
+    IonicModule,
+    RouterModule,
+    TabsComponent  // ✅ Agrega aquí
   ],
 })
 export class MenuComponent {}
