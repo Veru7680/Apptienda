@@ -14,7 +14,7 @@ export const routes: Routes = [
 
   // 🔹 Rutas dentro del menú (para usuarios logueados)
   {
-    path: '',
+    path: 'app',
     component: MenuComponent,
     children: [
       {

@@ -6,7 +6,7 @@ header('Content-Type: application/json');
 
 // Evitar salida de warnings
 error_reporting(E_ALL);
-ini_set('display_errors', 0);  // ⚠ NO mostrar errores al cliente
+ini_set('display_errors', 0);
 
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     http_response_code(200);
@@ -37,6 +37,15 @@ if (!isset($data['nombre'], $data['email'], $data['password'])) {
 $nombre = $conn->real_escape_string($data['nombre']);
 $email  = $conn->real_escape_string($data['email']);
 $password = password_hash($data['password'], PASSWORD_DEFAULT);
+
+// **Validar si el correo ya existe**
+$checkSql = "SELECT id FROM usuarios WHERE email='$email' LIMIT 1";
+$result = $conn->query($checkSql);
+
+if ($result->num_rows > 0) {
+    echo json_encode(['status' => 'error', 'message' => 'El correo ya está registrado']);
+    exit();
+}
 
 // Insertar usuario
 $sql = "INSERT INTO usuarios (nombre, email, password) VALUES ('$nombre', '$email', '$password')";

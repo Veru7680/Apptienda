@@ -1,29 +1,36 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Iniciar Sesión</ion-title>
+    <ion-title>Login</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
   <ion-input
+    type="email"
     label="Email"
     labelPlacement="floating"
     [(ngModel)]="email"
-    type="email">
-  </ion-input>
+  ></ion-input>
 
   <ion-input
+    type="password"
     label="Contraseña"
     labelPlacement="floating"
     [(ngModel)]="password"
-    type="password">
+  >
     <ion-input-password-toggle slot="end"></ion-input-password-toggle>
   </ion-input>
 
-  <ion-button expand="block" (click)="login()">Ingresar</ion-button>
-
-  <!-- 🔹 Nuevo botón debajo -->
-  <ion-button expand="block" fill="clear" color="medium" (click)="goToRegister()">
+  <ion-button expand="block" (click)="login()">Iniciar sesión</ion-button>
+  <ion-button expand="block" fill="clear" (click)="goToRegistro()">
     ¿No tienes cuenta? Regístrate
   </ion-button>
+
+  <!-- Toast -->
+  <ion-toast
+    [isOpen]="showToast"
+    [message]="toastMessage"
+    duration="2000"
+    (didDismiss)="showToast = false"
+  ></ion-toast>
 </ion-content>
