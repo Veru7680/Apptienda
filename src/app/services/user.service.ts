@@ -4,8 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class UserService {
-
-  private baseUrl = 'http://localhost/comercio12_api/controllers/';
+private baseUrl = 'http://localhost/Apptienda/APPTIENDA_API/controllers/';
 
   async register(nombre: string, email: string, password: string) {
     const response = await fetch(this.baseUrl + 'register.php', {

@@ -5,10 +5,36 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  <ion-input type="text" label="Nombre" labelPlacement="floating" [(ngModel)]="nombre"></ion-input>
-  <ion-input type="email" label="Email" labelPlacement="floating" [(ngModel)]="email"></ion-input>
-  <ion-input type="password" label="Contraseña" labelPlacement="floating" [(ngModel)]="password">
+  <ion-input
+    type="text"
+    label="Nombre"
+    labelPlacement="floating"
+    [(ngModel)]="nombre"
+  ></ion-input>
+
+  <ion-input
+    type="email"
+    label="Email"
+    labelPlacement="floating"
+    [(ngModel)]="email"
+  ></ion-input>
+
+  <ion-input
+    type="password"
+    label="Contraseña"
+    labelPlacement="floating"
+    [(ngModel)]="password"
+  >
     <ion-input-password-toggle slot="end"></ion-input-password-toggle>
   </ion-input>
+
   <ion-button expand="block" (click)="register()">Registrar</ion-button>
+
+  <!-- Toast -->
+  <ion-toast
+    [isOpen]="showToast"
+    [message]="toastMessage"
+    duration="2000"
+    (didDismiss)="showToast = false"
+  ></ion-toast>
 </ion-content>
