@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Lista de Categorías</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list *ngIf="!cargando && categorias.length > 0">
+    <ion-item *ngFor="let categoria of categorias">
+      <ion-label>
+        <h2>{{ categoria.nombre }}</h2>
+        <p>{{ categoria.descripcion }}</p>
+        <small>Creado: {{ categoria.created_at }}</small>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <div *ngIf="cargando">Cargando categorías...</div>
+  <div *ngIf="!cargando && categorias.length === 0">No hay categorías disponibles</div>
+  <div *ngIf="errorMsg">{{ errorMsg }}</div>
+</ion-content>

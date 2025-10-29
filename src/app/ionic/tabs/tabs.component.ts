@@ -18,6 +18,7 @@ import {
   listOutline,
   searchOutline
 } from 'ionicons/icons';
+import { CategoriaListPage } from '../../categoria/categoria-list/categoria-list.page';
 
 @Component({
   selector: 'app-tabs',
@@ -34,6 +35,7 @@ import {
     IonTabs,
     IonTitle,
     IonToolbar,
+    CategoriaListPage
   ],
 })
 export class TabsComponent {

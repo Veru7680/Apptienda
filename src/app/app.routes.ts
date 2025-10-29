@@ -26,6 +26,10 @@ export const routes: Routes = [
         loadComponent: () => import('./ionic/tabs/tabs.component').then(c => c.TabsComponent)
       },
       {
+        path: 'categoria-list',
+        loadComponent: () => import('./categoria/categoria-list/categoria-list.page').then(m => m.CategoriaListPage)
+      },
+      {
         path: '',
         redirectTo: 'home',
         pathMatch: 'full'
