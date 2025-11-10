@@ -11,6 +11,7 @@ export const routes: Routes = [
     path: 'registro',
     loadComponent: () => import('./usuario/registro/registro.component').then(c => c.RegistroComponent)
   },
+  
 
   // 🔹 Rutas dentro del menú (para usuarios logueados)
   {
@@ -28,6 +29,10 @@ export const routes: Routes = [
       {
         path: 'categoria-list',
         loadComponent: () => import('./categoria/categoria-list/categoria-list.page').then(m => m.CategoriaListPage)
+      },
+      {
+        path: 'producto-register', // ✅ AGREGAR COMO RUTA PÚBLICA TEMPORAL
+        loadComponent: () => import('./producto/producto-register/producto-register.page').then(m => m.ProductoRegisterPage)
       },
       {
         path: '',

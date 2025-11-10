@@ -7,7 +7,7 @@ header("Access-Control-Allow-Headers: Content-Type");
 $host = "localhost";
 $user = "root";
 $pass = "";
-$db = "apptienda"; // Ajusta tu base de datos
+$db   = 'sistema_ventas'; // Ajusta tu base de datos
 
 $conn = new mysqli($host, $user, $pass, $db);
 

@@ -14,7 +14,7 @@ export interface Categoria {
 })
 export class CategoriaService {
 
-  private baseUrl = 'http://localhost/Apptienda/APPTIENDA_API/controllers/mostrarCategoria.php';
+  private baseUrl = 'http://localhost/apptienda/apptienda_API/controllers/mostrarCategoria.php';
 
   constructor(private http: HttpClient) { }
 

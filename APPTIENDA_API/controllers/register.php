@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 $host = 'localhost';
 $user = 'root';
 $pass = '';
-$db   = 'apptienda';
+$db   = 'sistema_ventas';
 
 $conn = new mysqli($host, $user, $pass, $db);
 
@@ -39,7 +39,7 @@ $email  = $conn->real_escape_string($data['email']);
 $password = password_hash($data['password'], PASSWORD_DEFAULT);
 
 // **Validar si el correo ya existe**
-$checkSql = "SELECT id FROM usuarios WHERE email='$email' LIMIT 1";
+$checkSql = "SELECT id FROM usuario WHERE email='$email' LIMIT 1";
 $result = $conn->query($checkSql);
 
 if ($result->num_rows > 0) {
@@ -48,7 +48,7 @@ if ($result->num_rows > 0) {
 }
 
 // Insertar usuario
-$sql = "INSERT INTO usuarios (nombre, email, password) VALUES ('$nombre', '$email', '$password')";
+$sql = "INSERT INTO usuario (nombre, email, password) VALUES ('$nombre', '$email', '$password')";
 
 if ($conn->query($sql) === TRUE) {
     echo json_encode(['status' => 'success', 'message' => 'Usuario registrado correctamente']);

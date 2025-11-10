@@ -53,7 +53,7 @@ export class LoginComponent {
         this.showToast = true;
 
         // Redirige al menú principal (MenuComponent → HomePage)
-        setTimeout(() => this.router.navigate(['/app/home']), 500);
+        setTimeout(() => this.router.navigate(['/app']), 500);
       } else {
         this.toastMessage = res.message || 'Email o contraseña incorrectos';
         this.showToast = true;

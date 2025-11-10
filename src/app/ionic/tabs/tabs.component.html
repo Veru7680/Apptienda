@@ -1,38 +1,33 @@
 <ion-tabs>
-
   <ion-tab tab="home">
-    <ion-header>
-      <ion-toolbar>
-        <ion-title>Producto</ion-title>
-      </ion-toolbar>
-    </ion-header>
     <ion-content>
-      <div class="example-content">Contenido de Producto</div>
+      <app-producto-list></app-producto-list> <!-- ✅ Agregar lista de productos aquí -->
+    
     </ion-content>
   </ion-tab>
 
-  <ion-tab tab="upload">
+<ion-tab tab="upload">
     <ion-header>
       <ion-toolbar>
-        <ion-title>Subir Producto</ion-title>
+        <ion-title>Registrar Producto</ion-title>
       </ion-toolbar>
     </ion-header>
-    <ion-content>
-      <div class="example-content">Contenido de Subir Producto</div>
+    <ion-content class="ion-padding">
+      <!-- ✅ FORMULARIO DE REGISTRO DIRECTO -->
+      <app-producto-register></app-producto-register>
     </ion-content>
   </ion-tab>
 
   <ion-tab tab="categories">
-  <ion-header>
-    <ion-toolbar>
-      <ion-title>Categorías</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <ion-content>
-    <app-categoria-list></app-categoria-list> <!-- ✅ Muestra la lista de categorías -->
-  </ion-content>
-</ion-tab>
-
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Categorías</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <app-categoria-list></app-categoria-list> <!-- ✅ Muestra la lista de categorías -->
+    </ion-content>
+  </ion-tab>
 
   <ion-tab tab="search">
     <ion-header>
@@ -48,7 +43,7 @@
   <ion-tab-bar slot="bottom">
     <ion-tab-button tab="home">
       <ion-icon name="cube-outline"></ion-icon>
-      Producto
+      Productos <!-- ✅ Cambiado a plural -->
     </ion-tab-button>
     <ion-tab-button tab="upload">
       <ion-icon name="cloud-upload-outline"></ion-icon>
@@ -65,4 +60,3 @@
   </ion-tab-bar>
 
 </ion-tabs>
-

@@ -1,0 +1,59 @@
+
+
+<ion-content>
+
+  <!-- Pull to refresh -->
+  <ion-refresher slot="fixed" (ionRefresh)="recargar($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <!-- Estado de carga -->
+  <div *ngIf="cargando" class="ion-text-center ion-padding">
+    <ion-spinner></ion-spinner>
+    <p>Cargando productos...</p>
+  </div>
+
+  <!-- Mensaje de error -->
+  <div *ngIf="error && !cargando" class="ion-text-center ion-padding">
+    <ion-icon name="alert-circle-outline" size="large"></ion-icon>
+    <h3>{{ error }}</h3>
+    <ion-button (click)="recargar()">Reintentar</ion-button>
+  </div>
+
+  <!-- Lista de productos -->
+  <ion-list *ngIf="!cargando && !error">
+    <ion-item *ngFor="let producto of productos" class="producto-item">
+      <ion-label>
+        <h2>{{ producto.nombre }}</h2>
+        <p>{{ producto.descripcion }}</p>
+        <p><strong>Precio: ${{ producto.precio }}</strong></p>
+        <p *ngIf="producto.categoria_nombre" class="categoria">
+          Categoría: {{ producto.categoria_nombre }}
+        </p>
+      </ion-label>
+
+      <ion-badge *ngIf="producto.categoria_id" slot="end" color="primary">
+        {{ producto.categoria_id }}
+      </ion-badge>
+    </ion-item>
+  </ion-list>
+
+  <!-- Mensaje si no hay productos -->
+  <div *ngIf="productos.length === 0 && !cargando && !error" class="ion-text-center ion-padding">
+    <ion-icon name="cube-outline" size="large"></ion-icon>
+    <h3>No hay productos disponibles</h3>
+    <p>Agrega algunos productos para comenzar</p>
+  </div>
+
+    <!-- Botón de Actualizar dentro del contenido -->
+  <div class="ion-text-center ion-padding-vertical">
+    <ion-button 
+      (click)="cargarProductos()" 
+      color="medium" 
+      fill="outline"
+      size="small">
+      <ion-icon name="refresh-outline" slot="start"></ion-icon>
+      Actualizar Lista
+    </ion-button>
+  </div>
+</ion-content>

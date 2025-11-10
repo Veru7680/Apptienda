@@ -56,8 +56,8 @@ export class RegistroComponent {
       this.showToast = true;
 
       if (res.status === 'success') {
-        // Redirigir a login después de 2 segundos
-        setTimeout(() => this.router.navigate(['/login']), 2000);
+        // ✅ REDIRIGIR AL MENÚ PRINCIPAL DESPUÉS DE 2 SEGUNDOS
+  setTimeout(() => this.router.navigate(['/app/tabs/home']), 2000);
       }
     } catch (error) {
       console.error('Error de fetch:', error);

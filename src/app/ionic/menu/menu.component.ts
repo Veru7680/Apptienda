@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
-
+import { UserService } from '../../services/user.service';
+import { Router } from '@angular/router';
 // ✅ Importa tu TabsComponent
 import { TabsComponent } from '../tabs/tabs.component'; // Ajusta la ruta según tu proyecto
 
@@ -18,4 +19,14 @@ import { TabsComponent } from '../tabs/tabs.component'; // Ajusta la ruta según
     TabsComponent  // ✅ Agrega aquí
   ],
 })
-export class MenuComponent {}
+export class MenuComponent {
+  constructor(
+    private userService: UserService,
+    private router: Router
+  ) {}
+
+  salir() {
+    this.userService.logout();
+    this.router.navigate(['/login']);
+  }
+}

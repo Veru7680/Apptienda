@@ -1,0 +1,77 @@
+.form-group {
+  margin-bottom: 25px;
+}
+
+.form-label {
+  font-size: 16px !important;
+  font-weight: 600;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.custom-input {
+  --padding-start: 16px;
+  --padding-end: 16px;
+  --padding-top: 12px;
+  --padding-bottom: 12px;
+  font-size: 16px;
+  border: 1px solid var(--ion-color-medium);
+  border-radius: 8px;
+  margin-top: 8px;
+}
+
+.custom-textarea {
+  --padding-start: 16px;
+  --padding-end: 16px;
+  --padding-top: 12px;
+  --padding-bottom: 12px;
+  font-size: 16px;
+  border: 1px solid var(--ion-color-medium);
+  border-radius: 8px;
+  margin-top: 8px;
+}
+
+.custom-select {
+  --padding-start: 16px;
+  --padding-end: 16px;
+  --padding-top: 12px;
+  --padding-bottom: 12px;
+  font-size: 16px;
+  border: 1px solid var(--ion-color-medium);
+  border-radius: 8px;
+  margin-top: 8px;
+}
+
+.error-message {
+  color: var(--ion-color-danger);
+  font-size: 14px;
+  margin-top: 5px;
+  padding-left: 5px;
+}
+
+.button-container {
+  margin-top: 40px;
+  padding: 0 10px;
+}
+
+.submit-button {
+  --border-radius: 12px;
+  --padding-top: 20px;
+  --padding-bottom: 20px;
+  height: 56px;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Mejorar el espaciado general */
+ion-content {
+  --padding-top: 20px;
+  --padding-bottom: 40px;
+}
+
+/* Estilo para los placeholders más grandes */
+ion-input::placeholder, 
+ion-textarea::placeholder {
+  font-size: 15px;
+}

@@ -1,0 +1,86 @@
+
+<ion-content>
+  <form [formGroup]="productoForm" (ngSubmit)="registrarProducto()">
+    <ion-list>
+      <!-- Nombre del Producto -->
+      <ion-item>
+        <ion-label position="stacked">
+          Nombre del Producto <ion-text color="danger">*</ion-text>
+        </ion-label>
+        <ion-input 
+          formControlName="nombre" 
+          type="text" 
+          placeholder="Ingresa el nombre del producto">
+        </ion-input>
+      </ion-item>
+      <ion-note *ngIf="nombre?.invalid && nombre?.touched" color="danger">
+        <div *ngIf="nombre?.errors?.['required']">El nombre es requerido</div>
+        <div *ngIf="nombre?.errors?.['minlength']">Mínimo 3 caracteres</div>
+      </ion-note>
+
+      <!-- Descripción -->
+      <ion-item>
+        <ion-label position="stacked">
+          Descripción <ion-text color="danger">*</ion-text>
+        </ion-label>
+        <ion-textarea 
+          formControlName="descripcion" 
+          placeholder="Describe el producto..."
+          rows="4">
+        </ion-textarea>
+      </ion-item>
+      <ion-note *ngIf="descripcion?.invalid && descripcion?.touched" color="danger">
+        <div *ngIf="descripcion?.errors?.['required']">La descripción es requerida</div>
+        <div *ngIf="descripcion?.errors?.['minlength']">Mínimo 10 caracteres</div>
+      </ion-note>
+
+      <!-- Precio -->
+      <ion-item>
+        <ion-label position="stacked">
+          Precio ($) <ion-text color="danger">*</ion-text>
+        </ion-label>
+        <ion-input 
+          formControlName="precio" 
+          type="number" 
+          min="0.01"
+          step="0.01"
+          placeholder="0.00">
+        </ion-input>
+      </ion-item>
+      <ion-note *ngIf="precio?.invalid && precio?.touched" color="danger">
+        <div *ngIf="precio?.errors?.['required']">El precio es requerido</div>
+        <div *ngIf="precio?.errors?.['min']">El precio debe ser mayor a 0</div>
+      </ion-note>
+
+      <!-- Categoría -->
+      <ion-item>
+        <ion-label position="stacked">
+          Categoría <ion-text color="danger">*</ion-text>
+        </ion-label>
+        <ion-select 
+          formControlName="categoria_id" 
+          placeholder="Selecciona una categoría">
+          <ion-select-option 
+            *ngFor="let categoria of categorias" 
+            [value]="categoria.id">
+            {{ categoria.nombre }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-note *ngIf="categoria_id?.invalid && categoria_id?.touched" color="danger">
+        La categoría es requerida
+      </ion-note>
+    </ion-list>
+
+    <!-- Botón de Registrar -->
+    <ion-button 
+      type="submit" 
+      expand="block" 
+      class="ion-margin"
+      [disabled]="productoForm.invalid || cargando">
+      <ion-spinner *ngIf="cargando" name="crescent"></ion-spinner>
+      <span *ngIf="!cargando">Registrar Producto</span>
+      <span *ngIf="cargando">Registrando...</span>
+    </ion-button>
+  </form>
+</ion-content>

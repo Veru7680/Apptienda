@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 $host = 'localhost';
 $user = 'root';
 $pass = '';
-$db   = 'apptienda';
+$db   = 'sistema_ventas';
 
 $conn = new mysqli($host, $user, $pass, $db);
 if ($conn->connect_error) {
@@ -31,7 +31,7 @@ $email = $conn->real_escape_string($data['email']);
 $password = $data['password'];
 
 // Buscar usuario
-$sql = "SELECT * FROM usuarios WHERE email='$email' LIMIT 1";
+$sql = "SELECT * FROM usuario WHERE email='$email' LIMIT 1";
 $result = $conn->query($sql);
 
 if ($result->num_rows === 0) {
@@ -41,10 +41,20 @@ if ($result->num_rows === 0) {
 
 $user = $result->fetch_assoc();
 
+// Verificar contraseña
 if (password_verify($password, $user['password'])) {
-    echo json_encode(['status' => 'success', 'message' => 'Login correcto', 'user' => ['id' => $user['id'], 'nombre' => $user['nombre'], 'email' => $user['email']]]);
+    echo json_encode([
+        'status' => 'success', 
+        'message' => 'Login correcto', 
+        'user' => [
+            'id' => $user['id'], 
+            'nombre' => $user['nombre'], 
+            'email' => $user['email']
+        ]
+    ]);
 } else {
     echo json_encode(['status' => 'error', 'message' => 'Contraseña incorrecta']);
 }
 
 $conn->close();
+?>
