@@ -34,6 +34,12 @@ export const routes: Routes = [
         path: 'producto-register', // ✅ AGREGAR COMO RUTA PÚBLICA TEMPORAL
         loadComponent: () => import('./producto/producto-register/producto-register.page').then(m => m.ProductoRegisterPage)
       },
+
+      {
+        path: 'categoria-register',
+        loadComponent: () => import('./categoria/categoria-register/categoria-register.page').then(m => m.CategoriaRegisterPage)
+      },
+     
       {
         path: '',
         redirectTo: 'home',

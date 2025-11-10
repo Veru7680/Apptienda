@@ -21,4 +21,11 @@ export class CategoriaService {
   getCategorias(): Observable<Categoria[]> {
     return this.http.get<Categoria[]>(this.baseUrl); // <-- cambiar apiUrl por baseUrl
   }
+
+ // En categoria.service.ts
+registrarCategoria(categoria: any) {
+  const url = 'http://localhost/apptienda/apptienda_API/controllers/crearCategoria.php';
+  console.log('📡 Enviando a:', url);
+  return this.http.post(url, categoria);
+}
 }

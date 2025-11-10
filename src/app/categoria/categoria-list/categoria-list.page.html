@@ -5,6 +5,13 @@
 </ion-header>
 
 <ion-content class="ion-padding">
+  <!-- Estado de carga -->
+  <div *ngIf="cargando" class="ion-text-center">
+    <ion-spinner></ion-spinner>
+    <p>Cargando categorías...</p>
+  </div>
+
+  <!-- Lista de categorías -->
   <ion-list *ngIf="!cargando && categorias.length > 0">
     <ion-item *ngFor="let categoria of categorias">
       <ion-label>
@@ -15,7 +22,56 @@
     </ion-item>
   </ion-list>
 
-  <div *ngIf="cargando">Cargando categorías...</div>
-  <div *ngIf="!cargando && categorias.length === 0">No hay categorías disponibles</div>
-  <div *ngIf="errorMsg">{{ errorMsg }}</div>
+  <!-- Mensaje si no hay categorías -->
+  <div *ngIf="!cargando && categorias.length === 0" class="ion-text-center">
+    <ion-icon name="list-outline" size="large"></ion-icon>
+    <h3>No hay categorías disponibles</h3>
+    <p>Agrega algunas categorías para comenzar</p>
+  </div>
+
+  <!-- Mensaje de error -->
+  <div *ngIf="errorMsg" class="ion-text-center ion-padding">
+    <ion-icon name="alert-circle-outline" size="large" color="danger"></ion-icon>
+    <h3>Error</h3>
+    <p>{{ errorMsg }}</p>
+  </div>
+
+  <!-- FORMULARIO DE REGISTRO DEBAJO DE LA LISTA -->
+  <ion-card class="ion-margin-top">
+    <ion-card-header>
+      <ion-card-title>Registrar Nueva Categoría</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <form (ngSubmit)="registrarCategoria()">
+        <ion-item>
+          <ion-label position="stacked">Nombre</ion-label>
+          <ion-input 
+            [(ngModel)]="nuevaCategoria.nombre" 
+            name="nombre" 
+            placeholder="Ingresa el nombre de la categoría"
+            required>
+          </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Descripción</ion-label>
+          <ion-textarea 
+            [(ngModel)]="nuevaCategoria.descripcion" 
+            name="descripcion" 
+            placeholder="Describe la categoría..."
+            rows="3">
+          </ion-textarea>
+        </ion-item>
+
+        <ion-button 
+          type="submit" 
+          expand="block" 
+          class="ion-margin-top"
+          [disabled]="!nuevaCategoria.nombre">
+          <ion-icon name="add-circle-outline" slot="start"></ion-icon>
+          Registrar Categoría
+        </ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

@@ -12,7 +12,9 @@ import {
   IonTabs,
   IonTitle,
   IonToolbar,
-  IonButton // ✅ AGREGAR IonButton PARA EL BOTÓN
+  IonButton,// ✅ AGREGAR IonButton PARA EL BOTÓN
+   IonButtons
+  
 } from '@ionic/angular/standalone';
 
 import { addIcons } from 'ionicons';
@@ -46,6 +48,7 @@ import { ProductoRegisterPage } from '../../producto/producto-register/producto-
     IonTitle,
     IonToolbar,
     IonButton, // ✅ AGREGAR
+     IonButtons,
     CategoriaListPage,
     ProductoListPage,
     ProductoRegisterPage
